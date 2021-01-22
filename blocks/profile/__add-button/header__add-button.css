@@ -1,0 +1,23 @@
+.header__add-button {
+  width: 150px;
+  min-height: 50px;
+  background-image: url("../../../images/add.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 620px){
+  .header__add-button{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 445px){
+  .header__add-button{
+    width: 100%;
+    background-size: 16px;
+  }
+}
