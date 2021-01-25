@@ -2,6 +2,15 @@ let popUp = document.querySelector('.popup');
 let profileEditButton = document.querySelector('.profile__edit-button');
 let closeButton = document.querySelector('.popup__close-button');
 let formElement = document.querySelector('.popup__save-button');
+let likeButton = document.querySelectorAll('.element__like');
+console.log(likeButton);
+
+for (let i=0; i < likeButton.length; i++) {
+  likeButton[i].addEventListener('click', function () {
+    likeButton[i].classList.toggle('element__like_active');
+  });
+}
+
 
 profileEditButton.addEventListener('click', function () {
   //popUp.style.display = 'flex'; - можно было и так, то в тз написано сделать через добавление и удаление стилей, эх...

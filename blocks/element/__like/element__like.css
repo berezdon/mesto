@@ -6,6 +6,10 @@
   transition: opacity 0.2s linear;
 }
 
+.element__like:active {
+  background-image: url("../../../images/like-active.svg");
+}
+
 .element__like:hover {
   opacity: 0.5
 }
