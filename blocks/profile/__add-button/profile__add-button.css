@@ -1,4 +1,4 @@
-.header__add-button {
+.profile__add-button {
   width: 150px;
   min-height: 50px;
   background-image: url("../../../images/add.svg");
@@ -7,16 +7,21 @@
   box-sizing: border-box;
   border: 1px solid #fff;
   cursor: pointer;
+  transition: opacity 0.2s linear;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 620px){
-  .header__add-button{
+  .profile__add-button{
     width: 100%;
   }
 }
 
 @media screen and (max-width: 445px){
-  .header__add-button{
+  .profile__add-button{
     width: 100%;
     background-size: 16px;
   }
