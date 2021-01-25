@@ -1,4 +1,4 @@
-.edit-form__firstname {
+.popup__firstname {
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
@@ -11,7 +11,7 @@
 }
 
 @media screen and (max-width: 445px){
-  .edit-form__firstname {
+  .popup__firstname {
     margin-top: calc(75px - 8px);
   }
 }

@@ -1,20 +1,27 @@
-.edit-form__button {
+.popup__save-button {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   min-height: 50px;
   background-color: #000;
+  border: 0;
   border-radius: 2px;
   color: #fff;
   margin-top: 48px;
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
+  transition: opacity 0.2s linear;
+  cursor: pointer;
+}
+
+.popup__save-button:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 445px){
-  .edit-form__button {
+  .popup__save-button {
     margin-top: 45px;
     font-size: 14px;
     line-height: 17px;
