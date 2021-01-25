@@ -30,4 +30,3 @@ function formSubmitHandler(evt) {
 }
 
 formElement.addEventListener('submit', formSubmitHandler);
-formElement.addEventListener('click', formSubmitHandler);
