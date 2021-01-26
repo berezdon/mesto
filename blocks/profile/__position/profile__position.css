@@ -4,7 +4,7 @@
   margin-right: 30px;
 }
 
-@media screen and (max-width: 620px){
+@media screen and (max-width: 635px){
   .profile__position{
     flex-direction: column;
     margin-right: 0;

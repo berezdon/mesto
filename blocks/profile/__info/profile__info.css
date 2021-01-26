@@ -1,21 +1,22 @@
 .profile__info {
-  position: relative;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: space-between;
-  width: 336px;
+  display: grid;
+  grid-template-columns: 294px 24px;
+  grid-template-rows: 39px 18px;
+  gap: 16px 18px;
   min-height: 73px;
 }
 
-@media screen and (max-width: 620px){
+@media screen and (max-width: 635px){
   .profile__info{
-    align-items: center;
+    justify-items: center;
     margin: 0 0 36px;
+    gap: 14px 10px;
   }
 }
 
 @media screen and (max-width: 445px){
   .profile__info{
-    width: 282px;
+    grid-template-columns: 189px 24px;
+    grid-template-rows: 26px 14px;
   }
 }
