@@ -3,7 +3,6 @@ let profileEditButton = document.querySelector('.profile__edit-button');
 let closeButton = document.querySelector('.popup__close-button');
 let formElement = document.querySelector('.popup__save-button');
 let likeButton = document.querySelectorAll('.element__like');
-console.log(likeButton);
 
 for (let i=0; i < likeButton.length; i++) {
   likeButton[i].addEventListener('click', function () {
