@@ -17,7 +17,15 @@
 }
 
 .popup__save-button:hover {
-  opacity: 0.6;
+  opacity: 0.8;
+}
+
+.popup__save-button:focus {
+  outline: none;
+}
+
+.popup__save-button:active {
+  outline: none;
 }
 
 @media screen and (max-width: 445px){

@@ -14,71 +14,71 @@
     <main class="content">
       <section class="profile">
         <div class="profile__position">
-          <img class="profile__avatar" src="./images/jak-iv-kusto-avatar.jpg" alt="Аватар Жак-Ив Кусто">
+          <img class="profile__avatar" src="./images/jak-iv-kusto-avatar.jpg" alt="Аватар пользователя">
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <div class="profile__edit-button"></div>
+            <button type="button" class="profile__edit-button" aria-label="Редактировать"></button>
             <p class="profile__subtitle">Исследователь океана</p>
           </div>
         </div>
-        <div class="profile__add-button"></div>
+        <button type="button" class="profile__add-button" aria-label="Добавить"></button>
       </section>
       <section class="elements">
-        <div class="element">
+        <article class="element">
           <img class="element__photo" src="./images/karachaevsk.jpg" alt="Карачаевск">
           <div class="element__content">
             <h2 class="element__text">Карачаевск</h2>
-            <img class="element__like" src="./images/like.svg" alt="Отметка нравиться">
+            <button type="button" class="element__like" aria-label="Нравиться"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img class="element__photo" src="./images/gora-elbrus.jpg" alt="Гора Эльбрус">
           <div class="element__content">
             <h2 class="element__text">Гора Эльбрус</h2>
-            <img class="element__like" src="./images/like.svg" alt="Отметка нравиться">
+            <button type="button" class="element__like" aria-label="Нравиться"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img class="element__photo" src="./images/dombai.jpg" alt="Домбай">
           <div class="element__content">
             <h2 class="element__text">Домбай</h2>
-            <img class="element__like" src="./images/like.svg" alt="Отметка нравиться">
+            <button type="button" class="element__like" aria-label="Нравиться"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img class="element__photo" src="./images/gora-elbrus.jpg" alt="Гора Эльбрус">
           <div class="element__content">
             <h2 class="element__text">Гора Эльбрус</h2>
-            <img class="element__like" src="./images/like.svg" alt="Отметка нравиться">
+            <button type="button" class="element__like" aria-label="Нравиться"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img class="element__photo" src="./images/dombai.jpg" alt="Домбай">
           <div class="element__content">
             <h2 class="element__text">Домбай</h2>
-            <img class="element__like" src="./images/like.svg" alt="Отметка нравиться">
+            <button type="button" class="element__like" aria-label="Нравиться"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img class="element__photo" src="./images/karachaevsk.jpg" alt="Карачаевск">
           <div class="element__content">
             <h2 class="element__text">Карачаево-Черкесия</h2>
-            <img class="element__like" src="./images/like.svg" alt="Отметка нравиться">
+            <button type="button" class="element__like" aria-label="Нравиться"></button>
           </div>
-        </div>
+        </article>
       </section>
       <section class="popup">
-        <form class="popup__container">
-          <div class="popup__close-button"></div>
+        <form name="popup" class="popup__container">
+          <button class="popup__close-button" aria-label="Закрыть"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input type="text" class="popup__firstname" placeholder="Имя" name="firstname">
-          <input type="text" class="popup__profession" placeholder="О себе" name="profession">
-          <button type="submit" class="popup__save-button">Сохранить</button>
+          <input type="text" class="popup__input popup__input_firstname_value" placeholder="Имя" name="firstname">
+          <input type="text" class="popup__input popup__input_profession_value" placeholder="О себе" name="profession">
+          <button type="submit" class="popup__save-button" aria-label="Сохранить">Сохранить</button>
         </form>
       </section>
     </main>
     <footer class="footer">
-      <p class="footer__text">© 2020 Mesto Russia</p>
+      <p class="footer__text">&copy; 2020 Mesto Russia</p>
     </footer>
   </div>
   <script src="scripts/index.js"></script>

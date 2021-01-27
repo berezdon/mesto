@@ -1,41 +1,28 @@
 let popUp = document.querySelector('.popup');
 let profileEditButton = document.querySelector('.profile__edit-button');
 let closeButton = document.querySelector('.popup__close-button');
-let formElement = document.querySelector('.popup__save-button');
-let likeButton = document.querySelectorAll('.element__like');
+let profileTitle = document.querySelector('.profile__title');
+let profileSubtitle = document.querySelector('.profile__subtitle');
+let nameInput = document.querySelector('.popup__input_firstname_value');
+let jobInput = document.querySelector('.popup__input_profession_value');
 
-for (let i=0; i < likeButton.length; i++) {
-  likeButton[i].addEventListener('click', function () {
-    likeButton[i].classList.toggle('element__like_active');
-  });
+function popupOpen() {
+  popUp.classList.add('popup_opened');
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileSubtitle.textContent;
 }
 
-
-profileEditButton.addEventListener('click', function () {
-  //popUp.style.display = 'flex'; - можно было и так, то в тз написано сделать через добавление и удаление стилей, эх...
-  popUp.classList.add('popup_opened');
-  let profileTitle = document.querySelector('.profile__title').textContent;
-  let profileSubtitle = document.querySelector('.profile__subtitle').textContent;
-  let nameInput = document.querySelector('.popup__firstname');
-  let jobInput = document.querySelector('.popup__profession');
-  nameInput.value = profileTitle;
-  jobInput.value = profileSubtitle;
-});
-
-closeButton.addEventListener('click', function () {
+function popupClose() {
   popUp.classList.remove('popup_opened');
-});
+}
 
 function formSubmitHandler(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  popUp.classList.remove('popup_opened');
-  let nameInput = document.querySelector('.popup__firstname').value;
-  let jobInput = document.querySelector('.popup__profession').value;
-  let profileTitle = document.querySelector('.profile__title');
-  let profileSubtitle = document.querySelector('.profile__subtitle');
-  profileTitle.textContent = nameInput;
-  profileSubtitle.textContent = jobInput;
+  popupClose();
+  profileTitle.textContent = nameInput.value;
+  profileSubtitle.textContent = jobInput.value;
 }
 
-formElement.addEventListener('submit', formSubmitHandler);
-formElement.addEventListener('click', formSubmitHandler);
+profileEditButton.addEventListener('click', popupOpen);
+closeButton.addEventListener('click', popupClose);
+document.addEventListener('submit', formSubmitHandler);
