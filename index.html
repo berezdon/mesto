@@ -25,7 +25,7 @@
         <button type="button" class="profile__add-button" aria-label="Добавить"></button>
       </section>
       <section class="elements">
-        <template class="template">
+        <template class="template-card">
           <article class="element">
             <img class="element__photo" src="#" alt="">
             <div class="element__trash"></div>
@@ -33,6 +33,13 @@
               <h2 class="element__text"></h2>
               <button type="button" class="element__like" aria-label="Нравиться"></button>
             </div>
+            <section class="popup popup_zoom">
+              <div class="popup__container-zoom">
+                <button type="button" class="popup__close-button popup__close-button_image" aria-label="Закрыть"></button>
+                <img class="popup__image" src="#">
+                <h2 class="popup__title popup__title_image"></h2>
+              </div>
+            </section>
           </article>
         </template>
       </section>

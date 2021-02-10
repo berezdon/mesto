@@ -12,7 +12,7 @@ const nameInputEdit = document.querySelector('.popup__input_firstname_value-edit
 const jobInputEdit = document.querySelector('.popup__input_profession_value-edit');
 const nameInputAdd = document.querySelector('.popup__input_firstname_value-add');
 const linkInputAdd = document.querySelector('.popup__input_profession_value-add');
-const cardElement = document.querySelector('.template').content;
+const cardElement = document.querySelector('.template-card').content;
 const elements = document.querySelector('.elements');
 const initialCards = [
   {
@@ -52,13 +52,24 @@ function addCard(item) {
   card.querySelector('.element__text').textContent = item.name;
   card.querySelector('.element__photo').src = item.link;
   card.querySelector('.element__photo').alt = item.alt;
+  card.querySelector('.popup__image').src = item.link;
+  card.querySelector('.popup__title_image').textContent = item.name;
   const like = card.querySelector('.element__like');
   const trash = card.querySelector('.element__trash');
+  const openImage = card.querySelector('.element__photo');
+  const popupZoom = card.querySelector('.popup_zoom');
+  const closeImage = card.querySelector('.popup__close-button_image');
   like.addEventListener('click', function() {
     like.classList.toggle('element__like_active');
   });
   trash.addEventListener('click', function () {
     trash.closest('.element').remove();
+  });
+  openImage.addEventListener('click', function () {
+    popupZoom.classList.add('popup_opened');
+  })
+  closeImage.addEventListener('click', function () {
+    popupZoom.classList.remove('popup_opened');
   });
   return card;
 }
