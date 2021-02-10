@@ -59,6 +59,8 @@ const initialCardsElements = initialCards.map(addCard);
 
 elements.append(...initialCardsElements);
 
+const cardLike = document.querySelectorAll('.element__like');
+
 function popupOpenEdit() {
   popUpEdit.classList.add('popup_opened');
   nameInputEdit.value = profileTitle.textContent;
@@ -101,3 +103,8 @@ closeButtonEdit.addEventListener('click', popupCloseEdit);
 closeButtonAdd.addEventListener('click', popupCloseAdd);
 popUpFormEdit.addEventListener('submit', formSubmitHandler);
 popUpFormAdd.addEventListener('submit', formSubmitCard);
+cardLike.forEach(item => {
+  item.addEventListener('click', function () {
+    item.classList.toggle('element__like_active');
+  });
+});
