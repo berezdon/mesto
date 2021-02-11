@@ -25,23 +25,6 @@
         <button type="button" class="profile__add-button" aria-label="Добавить"></button>
       </section>
       <section class="elements">
-        <template class="template-card">
-          <article class="element">
-            <img class="element__photo" src="#" alt="">
-            <div class="element__trash"></div>
-            <div class="element__content">
-              <h2 class="element__text"></h2>
-              <button type="button" class="element__like" aria-label="Нравиться"></button>
-            </div>
-            <section class="popup popup_zoom">
-              <div class="popup__container-zoom">
-                <button type="button" class="popup__close-button popup__close-button_image" aria-label="Закрыть"></button>
-                <img class="popup__image" src="#">
-                <h2 class="popup__title popup__title_image"></h2>
-              </div>
-            </section>
-          </article>
-        </template>
       </section>
       <section class="popup popup_edit">
         <form name="popup_edit" class="popup__container popup__container_edit">
@@ -57,7 +40,7 @@
           <button type="button" class="popup__close-button popup__close-button_add" aria-label="Закрыть"></button>
           <h2 class="popup__title">Новое место</h2>
           <input type="text" class="popup__input popup__input_firstname_value-add" placeholder="Название" name="firstname">
-          <input type="text" class="popup__input popup__input_profession_value-add" placeholder="Ссылка на картинку" name="link">
+          <input type="url" class="popup__input popup__input_profession_value-add" placeholder="Ссылка на картинку" name="link" required>
           <button type="submit" class="popup__save-button" aria-label="Сохранить">Создать</button>
         </form>
       </section>
@@ -65,6 +48,23 @@
     <footer class="footer">
       <p class="footer__text">&copy; 2020 Mesto Russia</p>
     </footer>
+    <template class="template-card">
+      <article class="element">
+        <img class="element__photo" src="#" alt="">
+        <div class="element__trash"></div>
+        <div class="element__content">
+          <h2 class="element__text"></h2>
+          <button type="button" class="element__like" aria-label="Нравиться"></button>
+        </div>
+        <section class="popup popup_zoom">
+          <div class="popup__container-zoom">
+            <button type="button" class="popup__close-button popup__close-button_image" aria-label="Закрыть"></button>
+            <img class="popup__image" src="#">
+            <h2 class="popup__title popup__title_image"></h2>
+          </div>
+        </section>
+      </article>
+    </template>
   </div>
 </body>
 </html>
