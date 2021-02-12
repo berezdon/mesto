@@ -1,11 +1,13 @@
 const popUpEdit = document.querySelector('.popup_edit');
 const popUpAdd = document.querySelector('.popup_add');
+const popUpImage = document.querySelector('.popup_zoom');
 const popUpFormEdit = document.querySelector('.popup__container_edit');
 const popUpFormAdd = document.querySelector('.popup__container_add');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
 const closeButtonEdit = document.querySelector('.popup__close-button_edit');
 const closeButtonAdd = document.querySelector('.popup__close-button_add');
+const closeButtonImage = document.querySelector('.popup__close-button_image');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 const nameInputEdit = document.querySelector('.popup__input_firstname_value-edit');
@@ -51,13 +53,9 @@ function addCard(item) {
   const card = cardElement.querySelector('.element').cloneNode(true);
   const cardText = card.querySelector('.element__text');
   const cardPhoto = card.querySelector('.element__photo');
-  const popupImage = card.querySelector('.popup__image');
-  const popupText = card.querySelector('.popup__title_image');
   cardText.textContent = item.name;
   cardPhoto.src = item.link;
   cardPhoto.alt = item.alt;
-  popupImage.src = item.link;
-  popupText.textContent = item.name;
   const like = card.querySelector('.element__like');
   const trash = card.querySelector('.element__trash');
   const openImage = card.querySelector('.element__photo');
@@ -67,15 +65,19 @@ function addCard(item) {
   trash.addEventListener('click', function () {
     trash.closest('.element').remove();
   });
-  openImage.addEventListener('click', () => {popupImageOpen(card);});
+  openImage.addEventListener('click', () => {popupOpenImage(item);});
+  /*Если функцию не надо оборачивать в фигурные скобки, напишите мне как это работает, у меня по другому не получилось,
+  * в документации https://developer.mozilla.org/ru/docs/Web/API/EventTarget/addEventListener написано, если
+  * нужно передать параметр в слушателя, то её требуется обернуть в анонимную или стрелочную функцию.*/
   return card;
 }
 
-function popupImageOpen(card) {
-  const popupZoom = card.querySelector('.popup_zoom');
-  popupOpen(popupZoom);
-  const closeImage = card.querySelector('.popup__close-button_image');
-  closeImage.addEventListener('click', () => {popupClose(popupZoom)});
+function popupOpenImage(item){
+  popupOpen(popUpImage);
+  const popupImage = popUpImage.querySelector('.popup__image');
+  const popupText = popUpImage.querySelector('.popup__title_image');
+  popupImage.src = item.link;
+  popupText.textContent = item.name;
 }
 
 const initialCardsElements = initialCards.map(addCard);
@@ -116,5 +118,6 @@ profileEditButton.addEventListener('click', function() {
 cardAddButton.addEventListener('click', () => {popupOpen(popUpAdd);});
 closeButtonEdit.addEventListener('click', () => {popupClose(popUpEdit);});
 closeButtonAdd.addEventListener('click', () => {popupClose(popUpAdd);});
+closeButtonImage.addEventListener('click', () => {popupClose(popUpImage);});
 popUpFormEdit.addEventListener('submit', formSubmitHandler);
 popUpFormAdd.addEventListener('submit', formSubmitCard);
