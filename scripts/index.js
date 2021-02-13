@@ -77,6 +77,7 @@ function popupOpenImage(item){
   const popupImage = popUpImage.querySelector('.popup__image');
   const popupText = popUpImage.querySelector('.popup__title_image');
   popupImage.src = item.link;
+  popupImage.alt = item.alt;
   popupText.textContent = item.name;
 }
 
