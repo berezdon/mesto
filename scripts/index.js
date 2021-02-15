@@ -65,10 +65,7 @@ function addCard(item) {
   trash.addEventListener('click', function () {
     trash.closest('.element').remove();
   });
-  openImage.addEventListener('click', () => {popupOpenImage(item);});
-  /*Если функцию не надо оборачивать в фигурные скобки, напишите мне как это работает, у меня по другому не получилось,
-  * в документации https://developer.mozilla.org/ru/docs/Web/API/EventTarget/addEventListener написано, если
-  * нужно передать параметр в слушателя, то её требуется обернуть в анонимную или стрелочную функцию.*/
+  openImage.addEventListener('click', () => popupOpenImage(item));
   return card;
 }
 
@@ -116,9 +113,9 @@ profileEditButton.addEventListener('click', function() {
   nameInputEdit.value = profileTitle.textContent;
   jobInputEdit.value = profileSubtitle.textContent;
 });
-cardAddButton.addEventListener('click', () => {popupOpen(popUpAdd);});
-closeButtonEdit.addEventListener('click', () => {popupClose(popUpEdit);});
-closeButtonAdd.addEventListener('click', () => {popupClose(popUpAdd);});
-closeButtonImage.addEventListener('click', () => {popupClose(popUpImage);});
+cardAddButton.addEventListener('click', () => popupOpen(popUpAdd));
+closeButtonEdit.addEventListener('click', () => popupClose(popUpEdit));
+closeButtonAdd.addEventListener('click', () => popupClose(popUpAdd));
+closeButtonImage.addEventListener('click', () => popupClose(popUpImage));
 popUpFormEdit.addEventListener('submit', formSubmitHandler);
 popUpFormAdd.addEventListener('submit', formSubmitCard);
