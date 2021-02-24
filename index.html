@@ -6,6 +6,7 @@
   <title>Места России</title>
   <link rel="stylesheet" href="./pages/index.css">
   <script src="scripts/index.js" defer></script>
+  <script src="scripts/validate.js" defer></script>
 </head>
 <body>
   <div class="page">
@@ -27,21 +28,25 @@
       <section class="elements">
       </section>
       <section class="popup popup_edit">
-        <form name="popup_edit" class="popup__container popup__container_edit">
+        <form name="popup_edit" class="popup__container popup__container_edit" novalidate>
           <button type="button" class="popup__close-button popup__close-button_edit" aria-label="Закрыть"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input type="text" class="popup__input popup__input_firstname_value-edit" placeholder="Имя" name="firstname">
-          <input type="text" class="popup__input popup__input_profession_value-edit" placeholder="О себе" name="profession">
-          <button type="submit" class="popup__save-button" aria-label="Сохранить">Сохранить</button>
+          <input type="text" class="popup__input popup__input_firstname_value-edit" placeholder="Имя" name="firstname" id="name-input" required minlength="2" maxlength="40">
+          <textarea class="popup__input-error name-input-error" disabled>Вы пропустили это поле.</textarea>
+          <input type="text" class="popup__input popup__input_profession_value-edit" placeholder="О себе" name="profession" id="profession-input" required minlength="2" maxlength="200">
+          <textarea class="popup__input-error profession-input-error" disabled>Вы пропустили это поле.</textarea>
+          <button name="save-button-edit" type="submit" class="popup__save-button" aria-label="Сохранить">Сохранить</button>
         </form>
       </section>
       <section class="popup popup_add">
-        <form name="popup_add" class="popup__container popup__container_add">
+        <form name="popup_add" class="popup__container popup__container_add" novalidate>
           <button type="button" class="popup__close-button popup__close-button_add" aria-label="Закрыть"></button>
           <h2 class="popup__title">Новое место</h2>
-          <input type="text" class="popup__input popup__input_firstname_value-add" placeholder="Название" name="firstname">
-          <input type="url" class="popup__input popup__input_profession_value-add" placeholder="Ссылка на картинку" name="link" required>
-          <button type="submit" class="popup__save-button" aria-label="Сохранить">Создать</button>
+          <input type="text" class="popup__input popup__input_firstname_value-add" placeholder="Название" name="firstname" id="title-input" required minlength="2" maxlength="30">
+          <textarea class="popup__input-error title-input-error" disabled>Вы пропустили это поле.</textarea>
+          <input type="url" class="popup__input popup__input_profession_value-add" placeholder="Ссылка на картинку" name="link" id="link-input" required>
+          <textarea class="popup__input-error link-input-error" disabled>Вы пропустили это поле.</textarea>
+          <button name="save_button_add" type="submit" class="popup__save-button popup__save-button_inactive" aria-label="Создать">Создать</button>
         </form>
       </section>
       <section class="popup popup_zoom">

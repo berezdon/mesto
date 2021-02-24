@@ -1,8 +1,8 @@
 const popUpEdit = document.querySelector('.popup_edit');
 const popUpAdd = document.querySelector('.popup_add');
 const popUpImage = document.querySelector('.popup_zoom');
-const popUpFormEdit = document.querySelector('.popup__container_edit');
-const popUpFormAdd = document.querySelector('.popup__container_add');
+const popUpFormEdit = document.forms.popup_edit;
+const popUpFormAdd = document.forms.popup_add;
 const profileEditButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
 const closeButtonEdit = document.querySelector('.popup__close-button_edit');
@@ -91,21 +91,26 @@ function popupClose(popup) {
 
 function formSubmitHandler(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  popupClose(popUpEdit);
-  profileTitle.textContent = nameInputEdit.value;
-  profileSubtitle.textContent = jobInputEdit.value;
+  if(!evt.target.querySelector('.popup__save-button').classList.contains('popup__save-button_inactive')) {
+    popupClose(popUpEdit);
+    profileTitle.textContent = nameInputEdit.value;
+    profileSubtitle.textContent = jobInputEdit.value;
+  }
 }
 
 function formSubmitCard(evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  popupClose(popUpAdd);
-  const initialCard = {
+  if(!evt.target.querySelector('.popup__save-button').classList.contains('popup__save-button_inactive')) {
+    popupClose(popUpAdd);
+    const initialCard = {
       name: nameInputAdd.value,
       link: linkInputAdd.value,
       alt: nameInputAdd.value
+    }
+    elements.prepend(addCard(initialCard));
+    popUpFormAdd.reset();
+    popUpFormAdd.elements.save_button_add.classList.add('popup__save-button_inactive');
   }
-  elements.prepend(addCard(initialCard));
-  popUpFormAdd.reset();
 }
 
 profileEditButton.addEventListener('click', function() {
@@ -119,3 +124,17 @@ closeButtonAdd.addEventListener('click', () => popupClose(popUpAdd));
 closeButtonImage.addEventListener('click', () => popupClose(popUpImage));
 popUpFormEdit.addEventListener('submit', formSubmitHandler);
 popUpFormAdd.addEventListener('submit', formSubmitCard);
+
+document.addEventListener('keydown', function(evt) {
+  if(evt.key === 'Escape') {
+    popupClose(popUpEdit);
+    popupClose(popUpAdd);
+    popupClose(popUpImage);
+  }
+});
+
+document.addEventListener('click', function (evt) {
+  if(evt.target.classList.contains('popup')) {
+    popupClose(evt.target);
+  }
+})
