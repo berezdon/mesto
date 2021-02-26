@@ -5,6 +5,7 @@ const popUpImg = popUpImage.querySelector('.popup__image');
 const popupText = popUpImage.querySelector('.popup__title_image');
 const popUpFormEdit = document.forms.popup_edit;
 const popUpFormAdd = document.forms.popup_add;
+const saveButtonAdd = popUpFormAdd.elements.save_button_add;
 const profileEditButton = document.querySelector('.profile__edit-button');
 const cardAddButton = document.querySelector('.profile__add-button');
 const closeButtonEdit = document.querySelector('.popup__close-button_edit');
@@ -108,7 +109,8 @@ function submitFormCard(evt) {
   }
   elements.prepend(addCard(initialCard));
   popUpFormAdd.reset();
-  popUpFormAdd.elements.save_button_add.classList.add('popup__save-button_inactive');
+  saveButtonAdd.classList.add('popup__save-button_inactive');
+  saveButtonAdd.disabled = true;
 }
 
 function handleCloseByEsc(evt) {
