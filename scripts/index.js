@@ -135,4 +135,11 @@ popUpEdit.addEventListener('click', handleClickOnOverlay);
 popUpAdd.addEventListener('click', handleClickOnOverlay);
 popUpImage.addEventListener('click', handleClickOnOverlay);
 
+// Или можно сделать так, но у меня пока не работает, разбираться почему пока не стал, но на будущее сохраню
+/*popUpEdit.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button_edit')) {
+    closePopup(evt.target);
+  }
+});*/
+
 export{openPopup};

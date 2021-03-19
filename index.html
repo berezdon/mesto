@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Места России</title>
-  <link rel="stylesheet" href="./pages/index.css">
+  <link rel="stylesheet" href="./pages/index.css?v1.1">
 </head>
 <body>
   <div class="page">
@@ -61,7 +61,7 @@
     <template class="template-card">
       <article class="element">
         <img class="element__photo" src="#" alt="#">
-        <div class="element__trash"></div>
+        <button type="button" class="element__trash" aria-label="Удалить"></button>
         <div class="element__content">
           <h2 class="element__text"></h2>
           <button type="button" class="element__like" aria-label="Нравиться"></button>
@@ -70,7 +70,5 @@
     </template>
   </div>
   <script type="module" src="./scripts/index.js" defer></script>
-  <script type="module" src="scripts/Card.js" defer></script>
-  <script type="module" src="scripts/FormValidator.js" defer></script>
 </body>
 </html>
