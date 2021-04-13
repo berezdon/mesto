@@ -1,11 +1,10 @@
-import {openPopup} from './index.js';
-
-export class Card {
-  constructor(data, cardSelector) {
+export default class Card {
+  constructor(data, cardSelector, {handleCardClick}) {
     this._cardSelector = cardSelector;
     this._name = data.name;
     this._link = data.link;
     this._alt = data.alt;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -37,13 +36,7 @@ export class Card {
   }
 
   _handleImageClick() {
-    const popUpImage = document.querySelector('.popup_zoom');
-    const popUpImg = popUpImage.querySelector('.popup__image');
-    const popupText = popUpImage.querySelector('.popup__title_image');
-    openPopup(popUpImage);
-    popUpImg.src = this._link;
-    popUpImg.alt = this._alt;
-    popupText.textContent = this._name;
+    this._handleCardClick();
   }
 
   generateCard() {

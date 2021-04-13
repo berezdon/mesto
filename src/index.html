@@ -4,17 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Места России</title>
-  <link rel="stylesheet" href="./pages/index.css?v1.1">
 </head>
 <body>
   <div class="page">
     <header class="header">
-      <img class="logo" src="./images/logo.svg" alt="Логотип Места России">
+      <img class="logo" src="<%=require./images/logo.svg%>" alt="Логотип Места России">
     </header>
     <main class="content">
       <section class="profile">
         <div class="profile__position">
-          <img class="profile__avatar" src="./images/jak-iv-kusto-avatar.jpg" alt="Аватар пользователя">
+          <img class="profile__avatar" src="<%=require./images/jak-iv-kusto-avatar.jpg%>" alt="Аватар пользователя">
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button type="button" class="profile__edit-button" aria-label="Редактировать"></button>
@@ -69,6 +68,5 @@
       </article>
     </template>
   </div>
-  <script type="module" src="./scripts/index.js" defer></script>
 </body>
 </html>
