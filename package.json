@@ -7,17 +7,9 @@
     "build": "webpack --mode production",
     "dev": "webpack serve"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/berezdon/mesto.git"
-  },
   "keywords": [],
   "author": "Maksim Spirin",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/berezdon/mesto/issues"
-  },
-  "homepage": "https://github.com/berezdon/mesto#readme",
   "devDependencies": {
     "@babel/core": "^7.13.15",
     "@babel/preset-env": "^7.13.15",

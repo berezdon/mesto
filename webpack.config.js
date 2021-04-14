@@ -14,7 +14,8 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, './dist'),
     compress: true,
-    port: 8080,
+    port: 8181,
+
     open: true
   },
   module: {
@@ -31,24 +32,18 @@ module.exports = {
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, {
-          loader: 'css-loader'
-        }]
-      },
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, {
           loader: 'css-loader',
           options: { importLoaders: 1 }
         },
-        'postcss-loader']
-      },
+          'postcss-loader']
+      }
     ]
   },
   plugins: [
-  new HtmlWebpackPlugin({
-    template: './src/index.html'
-  }),
-  new CleanWebpackPlugin(),
-  new MiniCssExtractPlugin(),
-]
-}
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    }),
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin()
+  ]
+};
