@@ -1,7 +1,7 @@
 export default class UserInfo {
-  constructor(obj, popupSelector) {
-    this._name = obj.name;
-    this._info = obj.info;
+  constructor(userData, popupSelector) {
+    this._name = userData.name;
+    this._info = userData.info;
     this._popupSelector = popupSelector;
   }
 

@@ -7,6 +7,7 @@ export default class Popup {
     this._popupSelector.querySelector('.popup__close-button').addEventListener('click', () => this.close());
     document.addEventListener('keydown', (evt) => this._handleEscClose(evt));
     this._popupSelector.addEventListener('click', (evt) => {this._handleClickOnOverlay(evt)});
+    //Не смог найти способ, чтобы происходило удаление слушателя Не понимаю, как нужно создать функцию, что бы потом ёё добавлять и удалять в слушатель
   }
 
   _handleEscClose(evt) {

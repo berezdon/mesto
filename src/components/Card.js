@@ -7,6 +7,13 @@ export default class Card {
     this._handleCardClick = handleCardClick;
   }
 
+  _elementLike(){
+    return this._element.querySelector('.element__like');
+  }
+  _elementTrash() {
+    return this._element.querySelector('.element__trash');
+  }
+
   _getTemplate() {
     this._element = document
       .querySelector(this._cardSelector)
@@ -16,10 +23,10 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._element.querySelector('.element__like').addEventListener('click', () => {
+    this._elementLike().addEventListener('click', () => {
       this._handleTheLikeButton();
     });
-    this._element.querySelector('.element__trash').addEventListener('click', () => {
+    this._elementTrash().addEventListener('click', () => {
       this._handleTrashClick();
     });
     this._element.querySelector('.element__photo').addEventListener('click', () => {
@@ -28,11 +35,11 @@ export default class Card {
   }
 
   _handleTheLikeButton() {
-    this._element.querySelector('.element__like').classList.toggle('element__like_active');
+    this._elementLike().classList.toggle('element__like_active');
   }
 
   _handleTrashClick() {
-    this._element.querySelector('.element__trash').closest('.element').remove();
+    this._elementTrash().closest('.element').remove();
   }
 
   _handleImageClick() {
