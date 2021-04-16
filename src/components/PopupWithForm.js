@@ -7,11 +7,11 @@ export default class PopupWithForm extends Popup {
   }
 
   _popupInputs() {
-    return this._popupSelector.querySelectorAll('.popup__input');
+    return this._popupElement.querySelectorAll('.popup__input');
   }
 
   _popupContainer() {
-    return this._popupSelector.querySelector('.popup__container');
+    return this._popupElement.querySelector('.popup__container');
   }
 
   _getInputValues(){
@@ -36,18 +36,5 @@ export default class PopupWithForm extends Popup {
   close() {
     super.close();
     this._popupContainer().reset();
-    if (this._popupContainer().classList.contains('popup__container_add')) {
-      this._popupContainer().querySelector('.popup__save-button').disabled = true;
-      this._popupContainer().querySelector('.popup__save-button').classList.add('popup__save-button_inactive');
-    } else {
-      this._popupContainer().querySelector('.popup__save-button').disabled = false;
-      this._popupContainer().querySelector('.popup__save-button').classList.remove('popup__save-button_inactive');
-    }
-    this._popupContainer().querySelectorAll('.popup__input-error').forEach((item) => {
-      item.textContent = '';
-    });
-    this._popupInputs().forEach((item)=> {
-      item.classList.remove('popup__input_type_error');
-    });
   }
 }
