@@ -60,11 +60,11 @@ const popupAddCard = new PopupWithForm({
 const popupFormEdit = document.querySelector('.popup__container_edit');
 const popupFormAdd = document.querySelector('.popup__container_add');
 
-const formEdit = new FormValidator(validationConfig, popupFormEdit);
-formEdit.enableValidation();
+const formEditProfileValidator = new FormValidator(validationConfig, popupFormEdit);
+formEditProfileValidator.enableValidation();
 
-const formAdd = new FormValidator(validationConfig, popupFormAdd);
-formAdd.enableValidation();
+const formAddCardValidator = new FormValidator(validationConfig, popupFormAdd);
+formAddCardValidator.enableValidation();
 
 /*const formList = Array.from(document.querySelectorAll(formClasses.formSelector));
 formList.forEach((item) => {
@@ -74,14 +74,14 @@ formList.forEach((item) => {
 
 profileEditButton.addEventListener('click', function() {
   popupEditProfile.open();
-  formEdit.resetForm();
+  formEditProfileValidator.resetForm();
   nameInputEdit.value = userInfo.getUserInfo().name;
   jobInputEdit.value = userInfo.getUserInfo().info;
 
 });
 cardAddButton.addEventListener('click', () => {
   popupAddCard.open();
-  formAdd.resetForm();
+  formAddCardValidator.resetForm();
 });
 popUpImage.setEventListeners();
 popupAddCard.setEventListeners();
