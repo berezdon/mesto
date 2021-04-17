@@ -57,6 +57,23 @@ export default class FormValidator {
     }
   }
 
+  resetForm() {
+    const saveButton = this._form.querySelector('.popup__save-button');
+    if (this._form.classList.contains('popup__container_add')) {
+      saveButton.disabled = true;
+      saveButton.classList.add(this._inactiveButtonClass);
+    } else {
+      saveButton.disabled = false;
+      saveButton.classList.remove(this._inactiveButtonClass);
+    }
+    this._form.querySelectorAll('.popup__input-error').forEach((item) => {
+      item.textContent = '';
+    });
+    this._form.querySelectorAll('.popup__input').forEach((item)=> {
+      item.classList.remove(this._inputErrorClass);
+    });
+  }
+
   enableValidation() {
     return this._setEventListeners();
   }

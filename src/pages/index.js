@@ -7,7 +7,7 @@ import UserInfo from "../components/UserInfo.js";
 import PopupWithImage from '../components/PopupWithImage.js';
 import {
   initialCards,
-  formClasses
+  validationConfig
 } from "../utils/constants.js";
 
 const popUpImage = new PopupWithImage('.popup_zoom');
@@ -34,7 +34,7 @@ function createCard(item, cardSelector) {
   cardsList.addItem(cardElement);
 }
 
-function resetForm(popup) {
+/*function resetForm(popup) {
   if (popup.classList.contains('popup_add')) {
     popup.querySelector('.popup__save-button').disabled = true;
     popup.querySelector('.popup__save-button').classList.add('popup__save-button_inactive');
@@ -48,7 +48,7 @@ function resetForm(popup) {
   popup.querySelectorAll('.popup__input').forEach((item)=> {
     item.classList.remove('popup__input_type_error');
   });
-}
+}*/
 
 const cardsList = new Section({
     items: initialCards,
@@ -78,10 +78,10 @@ const popupAddCard = new PopupWithForm({
 const popupFormEdit = document.querySelector('.popup__container_edit');
 const popupFormAdd = document.querySelector('.popup__container_add');
 
-const formEdit = new FormValidator(formClasses, popupFormEdit);
+const formEdit = new FormValidator(validationConfig, popupFormEdit);
 formEdit.enableValidation();
 
-const formAdd = new FormValidator(formClasses, popupFormAdd);
+const formAdd = new FormValidator(validationConfig, popupFormAdd);
 formAdd.enableValidation();
 
 /*const formList = Array.from(document.querySelectorAll(formClasses.formSelector));
@@ -92,14 +92,14 @@ formList.forEach((item) => {
 
 profileEditButton.addEventListener('click', function() {
   popupEditProfile.open();
-  resetForm(popupEdit);
+  formEdit.resetForm();
   nameInputEdit.value = userInfo.getUserInfo().name;
   jobInputEdit.value = userInfo.getUserInfo().info;
 
 });
 cardAddButton.addEventListener('click', () => {
   popupAddCard.open();
-  resetForm(popupAdd);
+  formAdd.resetForm();
 });
 popUpImage.setEventListeners();
 popupAddCard.setEventListeners();
