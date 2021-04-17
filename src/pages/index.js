@@ -21,8 +21,6 @@ const elementsSelector = '.elements';
 const popupEditSelector = '.popup_edit';
 const popupAddSelector = '.popup_add';
 const templateCardSelector = '.template-card';
-const popupEdit = document.querySelector(popupEditSelector);
-const popupAdd = document.querySelector(popupAddSelector);
 
 function createCard(item, cardSelector) {
   const card = new Card(item, cardSelector,{
@@ -33,22 +31,6 @@ function createCard(item, cardSelector) {
   const cardElement = card.generateCard();
   cardsList.addItem(cardElement);
 }
-
-/*function resetForm(popup) {
-  if (popup.classList.contains('popup_add')) {
-    popup.querySelector('.popup__save-button').disabled = true;
-    popup.querySelector('.popup__save-button').classList.add('popup__save-button_inactive');
-  } else {
-    popup.querySelector('.popup__save-button').disabled = false;
-    popup.querySelector('.popup__save-button').classList.remove('popup__save-button_inactive');
-  }
-  popup.querySelectorAll('.popup__input-error').forEach((item) => {
-    item.textContent = '';
-  });
-  popup.querySelectorAll('.popup__input').forEach((item)=> {
-    item.classList.remove('popup__input_type_error');
-  });
-}*/
 
 const cardsList = new Section({
     items: initialCards,
