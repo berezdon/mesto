@@ -13,7 +13,9 @@
     <main class="content">
       <section class="profile">
         <div class="profile__position">
-          <img class="profile__avatar" src="<%=require('./images/jak-iv-kusto-avatar.jpg')%>" alt="Аватар пользователя">
+          <div class="profile__avatar">
+            <img class="profile__avatar-edit-image" src="<%=require('./images/edit-image.svg')%>" alt="Изменить фотографию">
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button type="button" class="profile__edit-button" aria-label="Редактировать"></button>
@@ -53,6 +55,23 @@
           <h2 class="popup__title popup__title_image"></h2>
         </div>
       </section>
+      <section class="popup popup_del">
+        <form name="popup_del" class="popup__container popup__container-del">
+          <button type="button" class="popup__close-button popup__close-button_image" aria-label="Закрыть"></button>
+          <h2 class="popup__title">Вы уверены?</h2>
+          <p class="popup__title-image-id"></p>
+          <button name="confirmation_button" type="submit" class="popup__save-button" aria-label="Да">Да</button>
+        </form>
+      </section>
+      <section class="popup popup_edit-avatar">
+        <form name="popup_edit-avatar" class="popup__container popup__container-edit-avatar" novalidate>
+          <button type="button" class="popup__close-button popup__close-button_image" aria-label="Закрыть"></button>
+          <h2 class="popup__title">Обновить аватар</h2>
+          <input type="url" class="popup__input popup__input_profession_value-edit-avatar" placeholder="Ссылка на картинку" name="link" id="edit-avatar-input" required>
+          <textarea class="popup__input-error edit-avatar-input-error" disabled>Вы пропустили это поле.</textarea>
+          <button name="save_button_add" type="submit" class="popup__save-button popup__save-button_inactive" aria-label="Сохранить" disabled>Сохранить</button>
+        </form>
+      </section>
     </main>
     <footer class="footer">
       <p class="footer__text">&copy; 2020 Mesto Russia</p>
@@ -63,7 +82,10 @@
         <button type="button" class="element__trash" aria-label="Удалить"></button>
         <div class="element__content">
           <h2 class="element__text"></h2>
-          <button type="button" class="element__like" aria-label="Нравиться"></button>
+          <div class="element__like-content">
+            <button type="button" class="element__like" aria-label="Нравиться"></button>
+            <p class="element__quantity-likes"></p>
+          </div>
         </div>
       </article>
     </template>

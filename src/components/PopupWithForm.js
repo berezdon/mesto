@@ -14,6 +14,10 @@ export default class PopupWithForm extends Popup {
     return this._popupElement.querySelector('.popup__container');
   }
 
+  _popupSaveButton() {
+    return this._popupElement.querySelector('.popup__save-button');
+  }
+
   _getInputValues(){
     const inputValue = {};
     this._popupInputs().forEach((item)=> {
@@ -29,7 +33,10 @@ export default class PopupWithForm extends Popup {
 
   _submitFormCard(evt) {
     evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-    this._callback(this._getInputValues());
+    this._callback({
+      inputValue: this._getInputValues(),
+      saveButton: this._popupSaveButton()
+    });
     this.close();
   }
 

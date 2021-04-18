@@ -59,12 +59,12 @@ export default class FormValidator {
 
   resetForm() {
     const saveButton = this._form.querySelector('.popup__save-button');
-    if (this._form.classList.contains('popup__container_add')) {
-      saveButton.disabled = true;
-      saveButton.classList.add(this._inactiveButtonClass);
-    } else {
+    if (this._form.classList.contains('popup__container_edit')) {
       saveButton.disabled = false;
       saveButton.classList.remove(this._inactiveButtonClass);
+    } else {
+      saveButton.disabled = true;
+      saveButton.classList.add(this._inactiveButtonClass);
     }
     this._form.querySelectorAll('.popup__input-error').forEach((item) => {
       item.textContent = '';
