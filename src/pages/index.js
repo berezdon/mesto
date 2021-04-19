@@ -19,7 +19,10 @@ import {
   popupDeleteSelector,
   popupEditAvatarSelector,
   templateCardSelector,
-  profileAvatar
+  profileAvatar,
+  popupFormEdit,
+  popupFormAdd,
+  popupFormEditAvatar
 } from "../utils/constants.js";
 
 const popUpImage = new PopupWithImage('.popup_zoom');
@@ -164,10 +167,6 @@ function renderLoading(isLoading, saveButton, saveButtonPrevious) {
     saveButton.textContent = saveButtonPrevious;
   }
 }
-
-const popupFormEdit = document.querySelector('.popup__container_edit');
-const popupFormAdd = document.querySelector('.popup__container_add');
-const popupFormEditAvatar = document.querySelector('.popup__container-edit-avatar');
 
 const formEditProfileValidator = new FormValidator(validationConfig, popupFormEdit);
 formEditProfileValidator.enableValidation();

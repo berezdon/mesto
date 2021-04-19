@@ -17,6 +17,9 @@ const popupDeleteSelector = '.popup_del';
 const popupEditAvatarSelector = '.popup_edit-avatar';
 const templateCardSelector = '.template-card';
 const profileAvatar = document.querySelector('.profile__avatar');
+const popupFormEdit = document.querySelector('.popup__container_edit');
+const popupFormAdd = document.querySelector('.popup__container_add');
+const popupFormEditAvatar = document.querySelector('.popup__container-edit-avatar');
 
 export {
   validationConfig,
@@ -30,5 +33,8 @@ export {
   popupDeleteSelector,
   popupEditAvatarSelector,
   templateCardSelector,
-  profileAvatar
+  profileAvatar,
+  popupFormEdit,
+  popupFormAdd,
+  popupFormEditAvatar
 }
