@@ -8,26 +8,28 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithDelete from "../components/PopupWithDelete.js";
 import Api from "../components/Api.js";
 import {
-  validationConfig
+  validationConfig,
+  profileEditButton,
+  cardAddButton,
+  nameInputEdit,
+  jobInputEdit,
+  elementsSelector,
+  popupEditSelector,
+  popupAddSelector,
+  popupDeleteSelector,
+  popupEditAvatarSelector,
+  templateCardSelector,
+  profileAvatar
 } from "../utils/constants.js";
 
 const popUpImage = new PopupWithImage('.popup_zoom');
-const userInfo = new UserInfo({name: '.profile__title', info: '.profile__subtitle', avatar: '.profile__avatar'});
-
-const profileEditButton = document.querySelector('.profile__edit-button');
-const cardAddButton = document.querySelector('.profile__add-button');
-const nameInputEdit = document.querySelector('.popup__input_firstname_value-edit');
-const jobInputEdit = document.querySelector('.popup__input_profession_value-edit');
-const elementsSelector = '.elements';
-const popupEditSelector = '.popup_edit';
-const popupAddSelector = '.popup_add';
-const popupDeleteSelector = '.popup_del';
-const popupEditAvatarSelector = '.popup_edit-avatar';
-const templateCardSelector = '.template-card';
-const name = document.querySelector('.profile__title');
-const about = document.querySelector('.profile__subtitle');
-const avatar = document.querySelector('.profile__avatar');
-const profileAvatar = document.querySelector('.profile__avatar');
+const userInfo = new UserInfo('.profile__title', '.profile__subtitle', '.profile__avatar');
+const cardsList = new Section({
+  renderer: (item) => {
+    cardsList.addItem(createCard(item, templateCardSelector));
+  }
+}, elementsSelector);
+let userId = '';
 
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-22',
@@ -37,11 +39,12 @@ const api = new Api({
   }
 });
 
-api.getUserData()
-  .then((data) => {
-    name.textContent = data.name;
-    about.textContent = data.about;
-    avatar.style.backgroundImage = `url("${data.avatar}")`;
+Promise.all([api.getUserData(), api.getInitialCards()])
+  .then((array) => {
+    userInfo.setUserInfo(array[0].name, array[0].about);
+    userInfo.setUserAvatar(array[0].avatar);
+    userId = array[0]._id;
+    addCardsToPage(array[1]);
   })
   .catch((err) => {
     console.log(err);
@@ -50,7 +53,10 @@ api.getUserData()
 const popUpDel = new PopupWithDelete({
   callback: (id) => {
     api.deleteCard(id)
-      .then((data) => console.log(data))
+      .then((data) => {
+        popUpDel.deleteCard();
+        console.log(data);
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -66,7 +72,7 @@ function createCard(item, cardSelector) {
       popUpDel.open(item._id, element);
     },
     handleLikeClick: (element) => {
-      if (element.elementLike.classList.contains('element__like_active')) {
+      if (element.isLiked) {
         api.putLikeCard(item._id)
           .then((data) => {
             element.elementQuantityLikes.textContent = data.likes.length;
@@ -85,26 +91,12 @@ function createCard(item, cardSelector) {
       }
     }
   });
-  return card.generateCard();
+  return card.generateCard(userId);
 }
 
 function addCardsToPage(initialCards) {
-  const cardsList = new Section({
-    items: initialCards,
-    renderer: (item) => {
-      cardsList.addItem(createCard(item, templateCardSelector));
-    }
-  }, elementsSelector);
-  cardsList.renderItems();
+  cardsList.renderItems(initialCards);
 }
-
-api.getInitialCards()
-  .then((initialCards) => {
-    addCardsToPage(initialCards);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 
 const popupEditProfile = new PopupWithForm({
     callback: (inputValue) => {

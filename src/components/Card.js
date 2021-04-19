@@ -9,18 +9,9 @@ export default class Card {
     this._handleCardClick = handleCardClick;
     this._handleTrashClick = handleTrashClick;
     this._handleLikeClick = handleLikeClick;
-  }
-
-  _elementLike(){
-    return this._element.querySelector('.element__like');
-  }
-
-  _elementTrash() {
-    return this._element.querySelector('.element__trash');
-  }
-
-  _elementQuantityLikes() {
-    return this._element.querySelector('.element__quantity-likes');
+    this._elementLike = '';
+    this._elementTrash = '';
+    this._elementQuantityLikes = '';
   }
 
   _getTemplate() {
@@ -32,11 +23,11 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._elementLike().addEventListener('click', () => {
+    this._elementLike.addEventListener('click', () => {
       this._handleTheLikeButton();
     });
-    this._elementTrash().addEventListener('click', () => {
-      this._handleTrashClick(this._elementTrash().closest('.element'));
+    this._elementTrash.addEventListener('click', () => {
+      this._handleTrashClick(this._elementTrash.closest('.element'));
     });
     this._element.querySelector('.element__photo').addEventListener('click', () => {
       this._handleCardClick();
@@ -44,21 +35,32 @@ export default class Card {
   }
 
   _handleTheLikeButton() {
-    this._elementLike().classList.toggle('element__like_active');
+    this._elementLike.classList.toggle('element__like_active');
     this._handleLikeClick({
-      elementLike: this._elementLike(),
-      elementQuantityLikes: this._elementQuantityLikes()
+      isLiked: this._isLiked(),
+      elementLike: this._elementLike,
+      elementQuantityLikes: this._elementQuantityLikes
     });
   }
 
-  generateCard() {
+  _isLiked() {
+    return this._elementLike.classList.contains('element__like_active');
+  }
+
+  generateCard(userId) {
     this._getTemplate();
-    if (this._id === 'e5594cdba74e79780d999d16') this._elementTrash().classList.add('element__trash_visible');
+    this._elementLike = this._element.querySelector('.element__like');
+    this._elementTrash = this._element.querySelector('.element__trash');
+    this._elementQuantityLikes = this._element.querySelector('.element__quantity-likes');
+    if (this._id === userId) this._elementTrash.classList.add('element__trash_visible');
+    this._likes.forEach((like) => {
+      if (like._id === userId) this._elementLike.classList.add('element__like_active');
+    });
     this._setEventListeners();
 
     const elementPhoto = this._element.querySelector('.element__photo');
     this._element.querySelector('.element__text').textContent = this._name;
-    this._elementQuantityLikes().textContent = this._likes.length;
+    this._elementQuantityLikes.textContent = this._likes.length;
     elementPhoto.src = this._link;
     elementPhoto.alt = this._alt;
 
