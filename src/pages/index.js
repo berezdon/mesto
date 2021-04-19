@@ -43,11 +43,11 @@ const api = new Api({
 });
 
 Promise.all([api.getUserData(), api.getInitialCards()])
-  .then((array) => {
-    userInfo.setUserInfo(array[0].name, array[0].about);
-    userInfo.setUserAvatar(array[0].avatar);
-    userId = array[0]._id;
-    addCardsToPage(array[1]);
+  .then(([userData, cards]) => {
+    userInfo.setUserInfo(userData.name, userData.about);
+    userInfo.setUserAvatar(userData.avatar);
+    userId = userData._id;
+    addCardsToPage(cards);
   })
   .catch((err) => {
     console.log(err);
@@ -132,7 +132,7 @@ const popupAddCard = new PopupWithForm({
           link: data.link,
           lt: data.name,
           likes: data.likes,
-          owner:{_id: 'e5594cdba74e79780d999d16'},
+          owner:{_id: userId},
           _id: data._id
         }]
         addCardsToPage(initialCard);
